@@ -1,0 +1,203 @@
+
+// ---- global settings ---------------
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+// vars
+$main-clr: #95D600;
+$white: #f5f5f5;
+$gray: #303030;
+
+
+// mixins
+@mixin flex ($justify, $align, $direction, $gap){
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+    gap: $gap	
+}
+
+@mixin media ($breakpoint){
+    @media(max-width:$breakpoint){
+        @content;
+    }
+}
+
+// --------------------
+// --- actual code ----
+
+body {
+    font-family: 'Baloo 2';
+    background-color: black;
+
+    a {
+        text-decoration: none;
+        color: $white;
+    }
+}
+
+// --- navigation and logo --------
+nav {
+    width: 100%;
+    @include flex(space-between, center, row, 0);
+    margin: 20px 0;
+    padding: 0 10%;
+    @include media (1200px){
+        flex-direction: column;
+    }
+
+    ul {
+        display: flex;
+        margin: 10px 0;
+        @include media (768px){
+            flex-direction: column;
+            text-align: center;
+        }
+
+        li {
+            list-style: none;
+            margin: 10px 30px;
+
+            a {
+                text-decoration: none;
+                color: $main-clr;
+                font-size: 1.7rem;
+                font-family: 'Rubik Wet Paint';
+                transition: 0.2s ease-in-out;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    img {
+        width: 250px;
+    }
+}
+
+
+
+ // ----- main content ------------
+
+ main {
+    @include flex(center, center, row, 5rem);
+    max-width: 100%;
+    margin-top: 5rem;
+    @include media (1200px){
+        flex-direction: column;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .text-box {
+        max-width: 40%;
+        color: $white;
+        margin: 0 10px;
+        @include media (1200px){
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: $main-clr;
+            line-height: 65px;
+        }
+
+        p {
+            margin: 1rem 0 3rem 0;
+            line-height: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            @include media (1200px){
+                margin: 1.5rem 0 3.5rem 0;
+            }
+        }
+
+        .btn {
+            text-decoration: none;
+            background-color: black;
+            padding: 10px 40px;
+            border-radius: 10px;
+            border: 3px solid $main-clr;
+            font-size: 1.2rem;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                background-color: $main-clr;
+                color: black
+            }
+        }
+    }
+}
+
+
+// ------ footer ------------
+
+footer {
+    padding: 5rem 0;
+    background-color: $gray;
+    width: 100%;
+    margin-top: 4rem;
+    @include flex(center, center, row, 10%);
+    color: $white;
+    @include media (768px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    ul {
+        line-height: 30px;
+        list-style-type: none;
+        font-size: 1.1rem;
+
+        a:hover {
+            color: $main-clr;
+        }
+    }
+}
+
+
+.newsletter {
+    @include flex(start, stretch, row, 0.6rem);
+    flex-direction: column;
+    @include media (768px){
+        align-items: center;
+    }
+
+    h2 {
+        color: $main-clr;
+    }
+
+    input {
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 3px;
+    }
+
+    .btn2 {
+        background-color: white;
+        border-radius: 3px;
+        padding: 0px 25px;
+        width: max-content;
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            background-color: $main-clr;
+        }
+    }
+}
